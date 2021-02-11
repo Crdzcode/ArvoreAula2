@@ -19,7 +19,7 @@ public class Arvore<TIPO extends Comparable> {
                         atual.setEsquerda(novoElemento);
                         break;
                     }
-                }else{ //se for maior ou igual
+                }else{
                     if (atual.getDireita() != null){
                         atual = atual.getDireita();
                     }else{
@@ -60,13 +60,12 @@ public class Arvore<TIPO extends Comparable> {
     }
 
     public boolean remover(TIPO valor){
-        //buscar o elemento na árvore
         Elemento<TIPO> atual = this.raiz;
         Elemento<TIPO> paiAtual = null;
         while(atual != null){
             if (atual.getValor().equals(valor)){
                 break;
-            }else if (valor.compareTo(atual.getValor()) == -1){ //valor procurado é menor que o atual
+            }else if (valor.compareTo(atual.getValor()) == -1){
                 paiAtual = atual;
                 atual = atual.getEsquerda();
             }else{
@@ -74,10 +73,7 @@ public class Arvore<TIPO extends Comparable> {
                 atual = atual.getDireita();
             }
         }
-        //verifica se existe o elemento
         if (atual != null){
-
-            //elemento tem 2 filhos ou elemento tem somente filho à direita
             if (atual.getDireita() != null){
 
                 Elemento<TIPO> substituto = atual.getDireita();
@@ -88,23 +84,22 @@ public class Arvore<TIPO extends Comparable> {
                 }
                 substituto.setEsquerda(atual.getEsquerda());
                 if (paiAtual != null){
-                    if (atual.getValor().compareTo(paiAtual.getValor()) == -1){ //atual < paiAtual
+                    if (atual.getValor().compareTo(paiAtual.getValor()) == -1){
                         paiAtual.setEsquerda(substituto);
                     }else{
                         paiAtual.setDireita(substituto);
                     }
-                }else{ //se não tem paiAtual, então é a raiz
+                }else{
                     this.raiz = substituto;
                 }
 
-                //removeu o elemento da árvore
-                if (substituto.getValor().compareTo(paiSubstituto.getValor()) == -1){ //substituto < paiSubstituto
+                if (substituto.getValor().compareTo(paiSubstituto.getValor()) == -1){
                     paiSubstituto.setEsquerda(null);
                 }else{
                     paiSubstituto.setDireita(null);
                 }
 
-            }else if (atual.getEsquerda() != null){ //tem filho só à esquerda
+            }else if (atual.getEsquerda() != null){
                 Elemento<TIPO> substituto = atual.getEsquerda();
                 Elemento<TIPO> paiSubstituto = atual;
                 while(substituto.getDireita() != null){
@@ -112,29 +107,28 @@ public class Arvore<TIPO extends Comparable> {
                     substituto = substituto.getDireita();
                 }
                 if (paiAtual != null){
-                    if (atual.getValor().compareTo(paiAtual.getValor()) == -1){ //atual < paiAtual
+                    if (atual.getValor().compareTo(paiAtual.getValor()) == -1){
                         paiAtual.setEsquerda(substituto);
                     }else{
                         paiAtual.setDireita(substituto);
                     }
-                }else{ //se for a raiz
+                }else{
                     this.raiz = substituto;
                 }
 
-                //removeu o elemento da árvore
-                if (substituto.getValor().compareTo(paiSubstituto.getValor()) == -1){ //substituto < paiSubstituto
+                if (substituto.getValor().compareTo(paiSubstituto.getValor()) == -1){
                     paiSubstituto.setEsquerda(null);
                 }else{
                     paiSubstituto.setDireita(null);
                 }
-            }else{ //não tem filho
+            }else{
                 if (paiAtual != null){
-                    if (atual.getValor().compareTo(paiAtual.getValor()) == -1){ //atual < paiAtual
+                    if (atual.getValor().compareTo(paiAtual.getValor()) == -1){
                         paiAtual.setEsquerda(null);
                     }else{
                         paiAtual.setDireita(null);
                     }
-                }else{ //é a raiz
+                }else{
                     this.raiz = null;
                 }
             }
