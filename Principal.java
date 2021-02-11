@@ -54,5 +54,6 @@ public class Principal {
         
         //System.out.println("\n\nPós-ordem");
         //arvore.posOrdem(arvore.getRaiz());
+        //
     }
 }
