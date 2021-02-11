@@ -48,11 +48,5 @@ public class Principal {
 
         System.out.println("\n\nEm-ordem");
         arvore.emOrdem(arvore.getRaiz());
-
-        //System.out.println("\n\nPré-ordem");
-        //arvore.preOrdem(arvore.getRaiz());
-
-        //System.out.println("\n\nPós-ordem");
-        //arvore.posOrdem(arvore.getRaiz());
     }
 }
